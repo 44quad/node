@@ -29,7 +29,7 @@ done
 
 # Delete data older than 48 hours = 60 minutes * 48 hours
 HOURS=$((60*48))
-find "$DATA_PATH" -mindepth 1 "${PRUNE_ARGS[@]}" -type f -mmin +$HOURS -exec rm {} +
+find "$DATA_PATH" -mindepth 1 -path "$DATA_PATH/node_trades" -prune -o "${PRUNE_ARGS[@]}" -type f -mmin +$HOURS -exec rm {} +
 
 # Get directory size after pruning
 size_after=$(du -sh "$DATA_PATH" | cut -f1)
