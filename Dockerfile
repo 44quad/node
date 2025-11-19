@@ -36,4 +36,4 @@ RUN curl -o /home/$USERNAME/hl-visor $HL_VISOR_URL \
 EXPOSE 4000-4010
 
 # Run a non-validating node
-ENTRYPOINT ["/home/hluser/hl-visor", "run-non-validator", "--replica-cmds-style", "recent-actions"]
+ENTRYPOINT ["/home/hluser/hl-visor", "run-non-validator", "--replica-cmds-style", "recent-actions", "--write-trades"]
