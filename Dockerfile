@@ -20,7 +20,7 @@ USER $USERNAME
 WORKDIR /home/$USERNAME
 
 # Configure chain to testnet
-RUN echo '{"chain": "Testnet"}' > /home/$USERNAME/visor.json
+RUN echo '{"chain": "Mainnet"}' > /home/$USERNAME/visor.json
 
 # Import GPG public key
 RUN curl -o /home/$USERNAME/pub_key.asc $PUB_KEY_URL \
