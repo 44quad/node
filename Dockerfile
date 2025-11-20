@@ -35,5 +35,7 @@ RUN curl -o /home/$USERNAME/hl-visor $HL_VISOR_URL \
 # Expose gossip ports
 EXPOSE 4000-4010
 
+ENV RUST_BACKTRACE=1
+
 # Run a non-validating node
 ENTRYPOINT ["/home/hluser/hl-visor", "run-non-validator", "--replica-cmds-style", "recent-actions", "--write-fills", "--batch-by-block"]
