@@ -32,7 +32,7 @@ RUN curl -o /home/$USERNAME/hl-visor $HL_VISOR_URL
 RUN curl -o /home/$USERNAME/hl-visor.asc $HL_VISOR_ASC_URL
 RUN chmod a+x /home/$USERNAME/hl-visor
 RUN gpg --verify /home/$USERNAME/hl-visor.asc /home/$USERNAME/hl-visor
-RUN curl -X POST --header "Content-Type: application/json" --data '{ "type": "gossipRootIps" }' https://api.hyperliquid.xyz/info | jq -c '{ "root_node_ips": [{"Ip": .[]}], "try_new_peers": false, "chain": "Mainnet", "reserved_peer_ips": ["5.6.7.8"] }'  > /home/$USERNAME/override_gossip_config.json
+RUN curl -X POST --header "Content-Type: application/json" --data '{ "type": "gossipRootIps" }' https://api.hyperliquid.xyz/info | jq --monochrome-output -c '{ "root_node_ips": [{"Ip": .[]}], "try_new_peers": true, "chain": "Mainnet", "reserved_peer_ips": ["5.6.7.8"] }'  > /home/$USERNAME/override_gossip_config.json
 
 
 # Expose gossip ports
